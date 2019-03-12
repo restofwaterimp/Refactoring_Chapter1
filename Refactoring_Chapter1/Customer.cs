@@ -38,7 +38,7 @@ namespace Refactoring_Chapter1
             {
                 double thisAmount = 0;
 
-                thisAmount = AmountFor(rent);
+                thisAmount = rent.GetCharge();
                 
                 frequentRenterPoints++;
 
@@ -56,12 +56,6 @@ namespace Refactoring_Chapter1
             result += "You earned " + frequentRenterPoints.ToString() + "frequent renter points";
             return result;
         }
-
-        private double AmountFor(Rental rental){
-            return rental.GetCharge();
-            }
-}                                              
-
-       
     }
+}
 
