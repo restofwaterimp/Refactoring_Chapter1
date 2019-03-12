@@ -36,13 +36,7 @@ namespace Refactoring_Chapter1
 
             foreach(var rent in this._rentals)
             {
-                frequentRenterPoints++;
-
-                if((rent.GetMovie().GetPriceCode() == Movie.NEW_RELEASE) &&
-                    rent.GetDaysRented() > 1)
-                {
-                    frequentRenterPoints++;
-                }
+                frequentRenterPoints += rent.GetFrequentRenterPoints();
 
                 result += "\t" + rent.GetMovie().GetTile() + "\t" + rent.GetCharge().ToString() + "\n";
                 totalAmount += rent.GetCharge();
