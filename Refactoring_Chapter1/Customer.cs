@@ -36,10 +36,6 @@ namespace Refactoring_Chapter1
 
             foreach(var rent in this._rentals)
             {
-                double thisAmount = 0;
-
-                thisAmount = rent.GetCharge();
-                
                 frequentRenterPoints++;
 
                 if((rent.GetMovie().GetPriceCode() == Movie.NEW_RELEASE) &&
@@ -48,8 +44,8 @@ namespace Refactoring_Chapter1
                     frequentRenterPoints++;
                 }
 
-                result += "\t" + rent.GetMovie().GetTile() + "\t" + thisAmount.ToString() + "\n";
-                totalAmount += thisAmount;
+                result += "\t" + rent.GetMovie().GetTile() + "\t" + rent.GetCharge().ToString() + "\n";
+                totalAmount += rent.GetCharge();
             }
 
             result += "Amount owed is " + totalAmount.ToString() + "\n";
