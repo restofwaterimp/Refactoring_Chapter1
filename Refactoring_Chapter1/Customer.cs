@@ -57,33 +57,33 @@ namespace Refactoring_Chapter1
             return result;
         }
 
-        private double AmountFor(Rental rent)
+        private double AmountFor(Rental rental)
         {
-            double thisAmount = 0;
-            switch (rent.GetMovie().GetPriceCode())
+            double result = 0;
+            switch (rental.GetMovie().GetPriceCode())
             {
                 case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (rent.GetDaysRented() > 2)
+                    result += 2;
+                    if (rental.GetDaysRented() > 2)
                     {
-                        thisAmount += (rent.GetDaysRented() - 2) * 1.5;
+                        result += (rental.GetDaysRented() - 2) * 1.5;
                     }
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += rent.GetDaysRented() * 3;
+                    result += rental.GetDaysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (rent.GetDaysRented() > 3)
+                    result += 1.5;
+                    if (rental.GetDaysRented() > 3)
                     {
-                        thisAmount += (rent.GetDaysRented() - 3) * 1.5;
+                        result += (rental.GetDaysRented() - 3) * 1.5;
                     }
                     break;
                 default:
                     break;
             }
 
-            return thisAmount;
+            return 0;
         }
     }
 }
