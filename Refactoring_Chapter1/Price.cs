@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Refactoring_Chapter1
 {
-   abstract class Price
+    abstract class Price
     {
         public abstract int GetPriceCode();
         public abstract double GetCharge(int daysRented);
+        public virtual int GetFrequentRenterPoints(int daysRented)
+        {
+            return 1;
+        }
     }
 
     class ChildrensPrece : Price
@@ -28,8 +32,9 @@ namespace Refactoring_Chapter1
             }
             return result;
         }
-    }
 
+
+    }
     class NewReleasePrice : Price
     {
         public override int GetPriceCode()
@@ -40,6 +45,11 @@ namespace Refactoring_Chapter1
         public override double GetCharge(int daysRented)
         {
             return daysRented * 3;
+        }
+        
+        public override int GetFrequentRenterPoints(int daysRented)
+        {
+            return (daysRented) > 1 ? 2 : 1;
         }
 
     }
