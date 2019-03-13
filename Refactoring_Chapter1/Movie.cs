@@ -18,7 +18,8 @@ namespace Refactoring_Chapter1
         public Movie(string title, int priceCode)
         {
             this._title = title;
-            this._priceCode = priceCode;
+            SetPriceCode(priceCode);
+            //this._priceCode = priceCode;
         }
 
         public int GetPriceCode()
@@ -75,6 +76,11 @@ namespace Refactoring_Chapter1
             {
                 return 1;
             }
+        }
+
+        private void SetPriceCode(int arg)
+        {
+            _priceCode = arg;
         }
     }
 }
