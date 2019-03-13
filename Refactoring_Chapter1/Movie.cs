@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.ExceptionServices;
 
 namespace Refactoring_Chapter1
 {
@@ -13,23 +14,35 @@ namespace Refactoring_Chapter1
         public const int NEW_RELEASE = 1;
 
         private string _title;
-        private int _priceCode;
+        private Price _price;
 
         public Movie(string title, int priceCode)
         {
             this._title = title;
             SetPriceCode(priceCode);
-            //this._priceCode = priceCode;
         }
 
         public int GetPriceCode()
         {
-            return _priceCode;
+            return _price.GetPriceCode();
         }
 
-        public void GetPriceCode(int arg)
+        public void SetPriceCode(int arg)
         {
-            _priceCode = arg;
+            switch (arg)
+            {
+                case REGULAR:
+                    _price = new RegularPrice();
+                    break;
+                case CHILDRENS:
+                    _price = new ChildrensPrece();
+                    break;
+                case NEW_RELEASE:
+                    _price = new NewReleasePrice();
+                    break;
+                default:
+                    throw new ArgumentException("Invalid charge Code!");
+            }
         }
 
         public string GetTile()
@@ -78,9 +91,6 @@ namespace Refactoring_Chapter1
             }
         }
 
-        private void SetPriceCode(int arg)
-        {
-            _priceCode = arg;
-        }
+
     }
 }
