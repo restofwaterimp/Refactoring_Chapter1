@@ -64,5 +64,17 @@ namespace Refactoring_Chapter1
 
             return 0;
         }
+
+       public int GetFrequentRenterPoints(int daysRented)
+        {
+            if ((GetPriceCode() == Movie.NEW_RELEASE) && daysRented> 1)
+            {
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+        }
     }
 }

@@ -29,19 +29,13 @@ namespace Refactoring_Chapter1
 
         public double GetCharge()
         {
-            return _movie.GetCharge(_daysRented);
+            return _movie.GetCharge
+                (_daysRented);
         }
 
         public int GetFrequentRenterPoints()
         {
-            if ((GetMovie().GetPriceCode() == Movie.NEW_RELEASE) && GetDaysRented() > 1)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
+            return _movie.GetFrequentRenterPoints(_daysRented);
         }
     }
 }
