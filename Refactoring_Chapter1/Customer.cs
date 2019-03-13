@@ -29,7 +29,6 @@ namespace Refactoring_Chapter1
 
         public string Statement()
         {
-            double totalAmount = 0;
             int frequentRenterPoints = 0;
 
             string result = "Rental Record for" + GetName() + "\n";
@@ -39,13 +38,24 @@ namespace Refactoring_Chapter1
                 frequentRenterPoints += rent.GetFrequentRenterPoints();
 
                 result += "\t" + rent.GetMovie().GetTile() + "\t" + rent.GetCharge().ToString() + "\n";
-                totalAmount += rent.GetCharge();
             }
 
-            result += "Amount owed is " + totalAmount.ToString() + "\n";
+            result += "Amount owed is " + GetTotalCharge().ToString() + "\n";
             result += "You earned " + frequentRenterPoints.ToString() + "frequent renter points";
             return result;
         }
+
+        private double GetTotalCharge()
+        {
+            double result = 0;
+                        
+            foreach (var rent in this._rentals)
+            {
+                 result += rent.GetCharge();
+            }
+            return result;
+        }
+
     }
 }
 
